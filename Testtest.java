@@ -40,7 +40,7 @@ public class Testtest {
     @Test
     public void TestVolvoTurnLeft() {
         Volvo240 testVolvo = new Volvo240(Color.blue, 12, 5);
-        testVolvo.incrementSpeed(1);
+        testVolvo.gas(1);
         testVolvo.turnLeft();
         testVolvo.move();
         assertEquals(10.75, testVolvo.getX());

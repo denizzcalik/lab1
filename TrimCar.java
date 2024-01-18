@@ -1,5 +1,5 @@
 public class TrimCar {
-    public final double trimFactor;
+    private final double trimFactor;
 
     public TrimCar(double trim) {
         this.trimFactor = trim;

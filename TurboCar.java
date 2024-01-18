@@ -1,6 +1,6 @@
 public class TurboCar {
-    public boolean turboOn;
-    public double turboval;
+    private boolean turboOn;
+    private double turboval;
 
     public TurboCar() {
         this.turboOn = false;
