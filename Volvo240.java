@@ -4,8 +4,8 @@ public class Volvo240 extends Car{
 
     public TrimCar trimcar;
 
-    public Volvo240(int doors, double horsepower, double speed, Color color, String model){
-        super(doors, horsepower, speed, color, model);
+    public Volvo240(Color color, int x, int y){
+        super(4, 100, color, "Volvo240", x, y);
         this.trimcar = new TrimCar(1.25);
     }
 

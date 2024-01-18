@@ -5,19 +5,19 @@ public abstract class Car implements Movable{
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
-    private int x;
-    private int y;
-    private double angle;
+    private double x;
+    private double y;
+    private double direction;
 
-    public Car(int doors, double horsepower, double speed, Color carcolor, String model, int x, int y, double angle) {
+    public Car(int doors, double horsepower, Color carcolor, String model, double x, double y) {
         this.nrDoors = doors;
         this.enginePower = horsepower;
-        this.currentSpeed = speed;
+        this.currentSpeed = 0;
         this.color = carcolor;
         this.modelName = model;
         this.x = x;
         this.y = y;
-        this.angle = angle;
+        this.direction = 0;
     }
     public int getNrDoors() {
         return this.nrDoors;
@@ -61,16 +61,60 @@ public abstract class Car implements Movable{
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
-    public void gas(double amount) {
-        incrementSpeed(amount);
+    public void gas(double amount){
+        try {
+            if ((amount > 1 || amount < 0)) {
+                throw new Exception();
+            } else {
+                incrementSpeed(amount);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Amount must be between 0 and 1");
+        }
     }
 
     public void brake(double amount) {
-        decrementSpeed(amount);
+        try {
+            if ((amount > 1 || amount < 0)) {
+                throw new Exception();
+            } else {
+                decrementSpeed(amount);
+            }
+        }  catch (Exception e) {
+            System.out.println("Amount must be between 0 and 1");
+        }
+
     }
 
     public void move() {
-        x += 
+        x += currentSpeed * Math.sin(direction);
+        y += currentSpeed * Math.cos(direction);
+
+    }
+    public double getX(){
+        return this.x;
+    }
+    public double getY(){
+        return this.y;
+    }
+    public double getDirection(){
+        return this.direction;
+    }
+    protected void setX(double x){
+        this.x = x;
+    }
+    protected void setY(double y){
+        this.y = y;
+    }
+    protected void setDirection(double direction){
+        this.direction = direction;
+    }
+    public void turnLeft(){
+        this.direction -= Math.PI/2;
+    }
+    public void turnRight(){
+        this.direction += Math.PI/2;
     }
 
 }
